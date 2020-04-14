@@ -14,6 +14,14 @@ data "aws_ssm_parameter" "alko_api_key" {
   name = "alko-api-key"
 }
 
+data "aws_ssm_parameter" "discord_alko_bot_id" {
+  name = "discord-alko-bot-id"
+}
+
+data "aws_ssm_parameter" "discord_bots_gg_token" {
+  name = "discord-bots-gg-token"
+}
+
 data "aws_ecr_repository" "alko_bot_repo" {
  name = "discord-alko"
 }
@@ -66,7 +74,9 @@ resource "aws_ecs_task_definition" "alko_bot_service" {
     "secrets": [
       {"name": "DISCORD_BOT_TOKEN", "valueFrom": "${data.aws_ssm_parameter.bot_token.arn}"},
       {"name": "ALKO_API_BASE_URL", "valueFrom": "${data.aws_ssm_parameter.alko_api_base_url.arn}"},
-      {"name": "ALKO_API_KEY", "valueFrom": "${data.aws_ssm_parameter.alko_api_key.arn}"}
+      {"name": "ALKO_API_KEY", "valueFrom": "${data.aws_ssm_parameter.alko_api_key.arn}"},
+      {"name": "DISCORD_ALKO_BOT_ID", "valueFrom": "${data.aws_ssm_parameter.discord_alko_bot_id.arn}"},
+      {"name": "DISCORD_BOTS_GG_TOKEN", "valueFrom": "${data.aws_ssm_parameter.discord_bots_gg_token.arn}"}
     ]
   }
 ]

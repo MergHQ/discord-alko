@@ -5,6 +5,7 @@ import logger from './log'
 import { dispatch, actionStream } from './actions'
 import productSearchController from './controllers/productSearchController'
 import infoController from './controllers/infoController'
+import postDiscordBotsStats from './utils/discordBotsStatusUpdater'
 
 const client = Eris(process.env.DISCORD_BOT_TOKEN)
 
@@ -21,5 +22,9 @@ actionStream<Message | null>('SEND_MESSAGE')
     client.createMessage(channelID, content)
   ))
   .onError(error => logger.error(`Error sending message ${error}`))
+
+// Post stats
+postDiscordBotsStats(client.guilds.size)
+setInterval(() => postDiscordBotsStats(client.guilds.size), 600000)
 
 client.connect()
