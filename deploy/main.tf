@@ -7,15 +7,15 @@ data "aws_ssm_parameter" "bot_token" {
 }
 
 data "aws_ssm_parameter" "alko_api_base_url" {
-  name = "alko_api_base_url"
+  name = "alko-api-base-url"
 }
 
 data "aws_ssm_parameter" "alko_api_key" {
-  name = "alko_api_key"
+  name = "alko-api-key"
 }
 
 data "aws_ecr_repository" "alko_bot_repo" {
- name = "discrod-alko"
+ name = "discord-alko"
 }
 
 data "aws_ecs_cluster" "cluster" {
