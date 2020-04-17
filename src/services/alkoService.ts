@@ -62,7 +62,7 @@ const getProductById = (productId: string): Promise<Product | null> =>
         volume,
       })
     )
-    .catch(() => null); 
+    .catch(() => null)
 
 export const searchProduct = (searchTerm: string): Promise<Product | null> =>
   alkoApi
@@ -71,5 +71,4 @@ export const searchProduct = (searchTerm: string): Promise<Product | null> =>
     .then(products =>
       products.length > 0 ?
       getProductById(products[0].id) :
-      null
-    )
+      null)
