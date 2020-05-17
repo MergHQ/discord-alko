@@ -2,7 +2,7 @@ import * as Bacon from 'baconjs'
 import { actionStream, dispatch } from '../actions'
 import { Message } from 'eris'
 import { searchProduct } from '../services/alkoService'
-import searchTemplate from '../templates/searcTemplate'
+import searchTemplate from '../templates/searchTemplate'
 
 const resolveSearchTerm = (message: string): string | null=> {
   const splitted = message.split('%alko search')
