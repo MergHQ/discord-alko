@@ -1,0 +1,34 @@
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: discord-alko
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: discord-alko
+    template:
+      metadata:
+        labels:
+          app: discord-alko
+      spec:
+        containers:
+        - name: discord-alko
+          image: registry.digitalocean.com/merg-registry/discord-alko:latest
+          env:
+            - name: DISCORD_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: discord-alko-secrets
+                  key: DISCORD_BOT_TOKEN
+            - name: ALKO_API_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: discord-alko-secrets
+                  key: ALKO_API_BASE_URL
+            - name: ALKO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: discord-alko-secrets
+                  key: ALKO_API_KEY
