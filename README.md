@@ -16,8 +16,4 @@ ALKO_API_KEY=
 
 Deployment is done on master branch push.
 
-Infrastructure can be provisioned with terraform.
-
-1. Setup aws-cli
-2. Create the required ssm parametes and subnets
-3. Run `terraform plan` and `terraform apply`
+The app is running on digitaloceans kubernetes cluster.
