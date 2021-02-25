@@ -1,21 +1,21 @@
 ---
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: discord-alko
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-alko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-alko
+  template:
+    metadata:
+      labels:
         app: discord-alko
-    template:
-      metadata:
-        labels:
-          app: discord-alko
-      spec:
-        containers:
+    spec:
+      containers:
         - name: discord-alko
-          image: registry.digitalocean.com/merg-registry/discord-alko:latest
+          image: hugis420/discord-alko:latest
           env:
             - name: DISCORD_BOT_TOKEN
               valueFrom:
